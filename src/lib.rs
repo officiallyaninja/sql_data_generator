@@ -1,6 +1,5 @@
 use rand::Rng;
 
-mod db;
 mod query_builder;
 
 // fn generate_query(table: query_builder) -> String {
@@ -20,9 +19,10 @@ mod tests {
     #[test]
     fn build_simple() {
         let cmd = Query::build("test")
-            .add_column(Type::Integer { min: 0, max: 100 })
-            .add_column(Type::Float { min: 1.0, max: 2.0 })
-            .generate(3);
+            .add_column_int(0, 100)
+            .add_column_float(1.0, 2.0)
+            .add_column_string_gibberish(1, 10)
+            .generate(10);
         println!("{cmd}")
     }
 }
