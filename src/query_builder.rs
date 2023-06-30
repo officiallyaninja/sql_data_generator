@@ -1,5 +1,3 @@
-use std::fmt::format;
-
 use rand::{distributions::Alphanumeric, rngs::ThreadRng, Rng};
 
 pub struct Query {
@@ -55,7 +53,7 @@ impl Query {
             };
             values += (format!("{value},")).as_ref();
         }
-        values.pop();
+        values.pop(); //removing trailing comma
         format!("({})", values)
     }
 
@@ -65,7 +63,7 @@ impl Query {
             let row = self.generate_row();
             cmd += format!("{row},").as_ref();
         }
-        cmd.pop();
+        cmd.pop(); //removing trailing comma
         cmd.push(';');
         cmd
     }

@@ -1,5 +1,3 @@
-use rand::Rng;
-
 mod query_builder;
 
 // fn generate_query(table: query_builder) -> String {
@@ -14,7 +12,7 @@ mod query_builder;
 // }
 #[cfg(test)]
 mod tests {
-    use crate::query_builder::{Query, Type};
+    use crate::query_builder::Query;
 
     #[test]
     fn build_simple() {
@@ -23,6 +21,6 @@ mod tests {
             .add_column_float(1.0, 2.0)
             .add_column_string_gibberish(1, 10)
             .generate(10);
-        println!("{cmd}")
+        println!("{cmd}");
     }
 }
